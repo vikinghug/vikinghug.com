@@ -153,6 +153,46 @@ screen-background-color(color) {
     screen-color(rgba(light-grey, .4));
   }
 
+  .title a {
+    color: yellow;
+    text-decoration: none;
+  }
+
+  .title a::before,
+  .title a::after {
+    display: inline-block;
+    opacity: 0;
+    -webkit-transition: -webkit-transform 0.3s, opacity 0.2s;
+    -moz-transition: -moz-transform 0.3s, opacity 0.2s;
+    transition: transform 0.3s, opacity 0.2s;
+  }
+
+  .title a::before {
+    margin-right: 10px;
+    content: '[';
+    -webkit-transform: translateX(20px);
+    -moz-transform: translateX(20px);
+    transform: translateX(20px);
+  }
+
+  .title a::after {
+    margin-left: 10px;
+    content: ']';
+    -webkit-transform: translateX(-20px);
+    -moz-transform: translateX(-20px);
+    transform: translateX(-20px);
+  }
+
+  .title a:hover::before,
+  .title a:hover::after,
+  .title a:focus::before,
+  .title a:focus::after {
+    opacity: 1;
+    -webkit-transform: translateX(0px);
+    -moz-transform: translateX(0px);
+    transform: translateX(0px);
+  }
+
   margin-bottom: column-gutter;
 }
 
