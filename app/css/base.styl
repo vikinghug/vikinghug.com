@@ -48,13 +48,16 @@ header {
 
   h1 {
     color: yellow;
-    font-size: 6em;
+    font-size: 3em;
     font-weight: 200;
   }
 
   h2 {
     font-size: 3em;
     font-style: italic;
+  }
+  @media medium-up {
+    h1 { font-size: 6em; }
   }
 }
 
@@ -64,15 +67,23 @@ header {
     padding: 20px;
   }
 
+  img { max-width: 180px; }
+
   h2 {
+    font-size: 1.4em;
     padding-bottom: 0;
+  }
+
+  @media medium-up {
+    img { max-width: 100%; }
+    h2 { font-size: 2em; }
   }
 }
 
 
 screen-color(color) {
   h3 { color: color; }
-  .screen span {
+  .screen > span {
     box-shadow: 0 0 0 1px color;
     color: color;
   }
@@ -82,6 +93,19 @@ screen-background-color(color) {
   background-color: color;
   &:before {
     background-color: color;
+  }
+}
+
+list-item(icon, color) {
+  @extend .fa;
+  line-height: 1.6;
+  display: block;
+  color: color;
+  &:before {
+    margin-right: 6px;
+    font-size: .8em;
+    line-height: 1.25;
+    content: icon;
   }
 }
 
@@ -135,17 +159,19 @@ screen-background-color(color) {
           color: light-purple;
 
           &.done {
-            color: green;
-            text-decoration: line-through;
+            list-item($fa-var-check, green);
+            span { text-decoration: line-through; }
           }
 
-          &.in-progress { color: yellow; }
+          &.in-progress {
+            list-item($fa-var-clock-o, yellow);
+          }
 
         }
       }
     }
 
-    span {
+    > span {
       display: block;
       position: absolute;
       font-size: 20px;
