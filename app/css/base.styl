@@ -194,6 +194,7 @@ screen-background-color(color) {
 
     &:hover,
     &:focus {
+      .fa:before { color: green; }
       &:before,
       &:after {
         opacity: 1;
@@ -265,4 +266,12 @@ footer {
 section {
   padding-top: 40px;
   padding-bottom: 40px;
+}
+
+.fa:before {
+  transition: color .3s ease;
+  color: rgba(light-purple, 1);
+  font-size: 16px;
+  margin-right: 6px;
+  line-height: 1.25;
 }
