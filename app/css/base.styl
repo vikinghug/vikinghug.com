@@ -19,7 +19,24 @@ body {
 
 .main {}
 
+h1, h2, h3, h4, h5 {
+  margin: 0;
+  padding: .75em 0 .75em;
+}
 
+a {
+  transition: color .3s ease;
+  color: light-grey;
+  text-decoration: none;
+  &:hover {
+    color: green;
+  }
+}
+
+
+//
+// HEADER
+// ******************************************************************
 
 header {
   background-image: url('/assets/img/coming-soon-bg.jpg');
@@ -68,6 +85,9 @@ screen-background-color(color) {
   }
 }
 
+//
+// MODULES
+// ******************************************************************
 .modules { padding-top: 100px; }
 .module {
   .screen {
@@ -118,15 +138,10 @@ screen-background-color(color) {
 
           &.in-progress { color: yellow; }
 
-          // &:before {
-          //   display: inline-block;
-          //   content: '';
-          //   margin-left: 10px;
-          //   margin-right: 10px;
-          // }
         }
       }
     }
+
     span {
       display: block;
       position: absolute;
@@ -154,8 +169,6 @@ screen-background-color(color) {
   }
 
   .title a {
-    color: yellow;
-    text-decoration: none;
     position: relative;
 
     &:before,
@@ -193,12 +206,6 @@ screen-background-color(color) {
   margin-bottom: column-gutter;
 }
 
-
-h1, h2, h3, h4, h5 {
-  margin: 0;
-  padding: .75em 0 .75em;
-}
-
 .screen {
 
   &:before {
@@ -218,6 +225,36 @@ h1, h2, h3, h4, h5 {
   }
 }
 
+
+//
+// CONTRIBUTORS
+// ******************************************************************
+section.contributors {
+  .panel {
+    height: 200px;
+    margin-bottom: 20px;
+  }
+  h3 {
+    color: red;
+    font-size: 2em;
+    font-weight: 100;
+    margin: 0;
+    padding: 0;
+  }
+  h4 {
+    color: light-purple;
+    border-bottom: 1px solid purple;
+    margin-bottom: 10px;
+  }
+  li {
+    margin-bottom: .5em;
+  }
+}
+
+
+//
+// FOOTER
+// ******************************************************************
 
 footer {
   background: purple;
