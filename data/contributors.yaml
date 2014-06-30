@@ -40,3 +40,8 @@
   website: juliantith.com
   twitter: avongenesis
   github: avongenesis
+
+- name: squidd
+  role: Misc/irc op
+  irc: squidd
+  github: squidz
