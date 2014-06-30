@@ -16,6 +16,9 @@ class Github extends EventEmitter
     "AddonDownloader"
     "vikinghug.com"
     "VikingBuddies"
+    "VikingDocs"
+    "VikingWarriorResource"
+    "VikingStalkerResource"
   ]
 
   repos: []
