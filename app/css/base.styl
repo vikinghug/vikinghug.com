@@ -67,16 +67,29 @@ header {
     padding: 20px;
   }
 
-  img { max-width: 180px; }
+  img {
+    width: 100%;
+    max-width: 100px;
+  }
 
   h2 {
-    font-size: 1.4em;
+    font-size: 1.2em;
+      line-height: 1;
     padding-bottom: 0;
+  }
+
+  p {
+    font-size: .85em;
+    line-height: 1.5em;
   }
 
   @media medium-up {
     img { max-width: 100%; }
     h2 { font-size: 2em; }
+    p {
+      font-size: 1em;
+      line-height: 1.6;
+    }
   }
 }
 
@@ -249,4 +262,9 @@ section {
   font-size: 16px;
   margin-right: 6px;
   line-height: 1.25;
+}
+
+input[type=image] {
+  display: block;
+  margin: 0 auto;
 }

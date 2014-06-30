@@ -26,7 +26,6 @@ webserver.listen(port)
 gh = require('./github.coffee')
 gh.getRepos("vikinghug")
 setInterval ->
-  console.log "getting repos"
   gh.getRepos("vikinghug")
 , 10000
 
