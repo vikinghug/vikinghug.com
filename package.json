@@ -38,7 +38,7 @@
     "stylus": "^0.42.3",
     "watchjs": "0.0.0",
     "win-spawn": "^2.0.0",
-    "nodemon": "^1.2.0",
+    "nodemon": "^1.2.0"
   },
   "repository": {
     "type": "git",
