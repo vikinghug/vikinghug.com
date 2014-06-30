@@ -31,6 +31,54 @@ a {
   &:hover {
     color: green;
   }
+  &.anchor {
+    display: block;
+    position: relative;
+    top: -2.9em;
+    visibility: hidden;
+  }
+}
+
+
+//
+// NAVIGATION
+// ******************************************************************
+navigation {
+  position: fixed;
+  background: rgba(purple, .98);
+  display: block;
+  text-align: center;
+  padding: 1.5em 0 1.8em;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: 1000;
+  ul {
+    display: inline-block;
+    margin: 0 auto;
+    list-style-type: none;
+    padding: 0;
+
+    li {
+      display: inline-block;
+      margin-right: 2em;
+      &:last-child { margin-right: 0; }
+      a {
+        font-family: header-font;
+        font-size: 1.4em;
+        font-weight: 300;
+        display: block;
+        padding: 5px 10px;
+        color: yellow;
+        box-shadow: 0 0 0 1px transparent;
+        &:hover {
+          background: yellow;
+          color: black;
+          box-shadow: 0 0 0 1px yellow;
+        }
+      }
+    }
+  }
 }
 
 
@@ -45,6 +93,8 @@ header {
   background-size: cover;
   width: 100%;
   text-align: center;
+  padding-top: 6em;
+  padding-bottom: 3em;
 
   h1 {
     color: yellow;
@@ -74,7 +124,7 @@ header {
 
   h2 {
     font-size: 1.2em;
-      line-height: 1;
+    line-height: 1;
     padding-bottom: 0;
   }
 
@@ -134,8 +184,12 @@ list-item(icon, color) {
 //
 // MODULES
 // ******************************************************************
-.modules { padding-top: 100px; }
+.modules {
+  padding-top: 8em;
+  padding-bottom: 8em;
+}
 .module {
+
   border-bottom: 1px solid purple;
   margin-bottom: 10px;
   screen-color(light-grey);
@@ -148,11 +202,6 @@ list-item(icon, color) {
     border-radius: 1000px;
     box-shadow: 0 0 0 1px light-purple;
     color: light-purple;
-    &:hover {
-      box-shadow: 0 0 0 1px light-grey;
-      background-color: light-grey;
-      color: black;
-    }
     position: absolute;
     font-size: .6em;
     text-transform: uppercase;
@@ -160,6 +209,11 @@ list-item(icon, color) {
     padding: 4px 10px;
     top: 47%;
     margin-top: -1em;
+    &:hover {
+      box-shadow: 0 0 0 1px light-grey;
+      background-color: light-grey;
+      color: black;
+    }
   }
 
 
@@ -214,11 +268,98 @@ list-item(icon, color) {
   }
 }
 
+//
+// Download
+// ******************************************************************
+section.download {
+  background: purple;
+  padding-bottom: 8em;
+  padding-top: 8em;
+  h2, h3, p { color: light-grey; }
+
+
+  h3:nth-of-type(1) { margin-top: 0; }
+
+  h3 {
+    border-bottom: 1px solid rgba(light-purple, .2);
+    color: red;
+    font-size: 2em;
+    font-weight: 100;
+    margin-top: 2em;
+    margin-bottom: 2em;
+    padding-bottom: .5em;
+  }
+
+  h4 {
+    color: light-purple
+    font-size: 1.6em;
+  }
+
+  p {
+    line-height: 1.6em;
+  }
+  a {
+    display: inline-block;
+    color: green;
+    &:hover {
+      background: green;
+      color: black;
+      padding: 0 10px;
+    }
+  }
+  a.button {
+    border-radius: 1000px;
+    box-shadow: 0 0 0 1px green;
+    color: green;
+    padding: .25em 1em;
+    font-size: 1.5em;
+    &:hover {
+      box-shadow: 0 0 0 1px green;
+      background-color: green;
+      color: black;
+      padding: .25em 1em;
+    }
+  }
+
+  blockquote p {
+    color: light-purple;
+    padding: 0;
+  }
+}
+
+//
+// FAQ
+// ******************************************************************
+section.faq {
+  background: white;
+  padding-bottom: 8em;
+  padding-top: 8em;
+  h2, h3, p { color: light-purple; }
+
+
+  h3:nth-of-type(1) { margin-top: 0; }
+
+  h3 {
+    border-bottom: 1px solid rgba(light-purple, .2);
+    color: red;
+    font-size: 2em;
+    font-weight: 100;
+    margin-top: 2em;
+    margin-bottom: .5em;
+    padding-bottom: .5em;
+  }
+
+  p {
+    line-height: 1.6em;
+  }
+}
+
 
 //
 // CONTRIBUTORS
 // ******************************************************************
 section.contributors {
+  padding-top: 8em;
   .panel {
     height: 200px;
     margin-bottom: 20px;

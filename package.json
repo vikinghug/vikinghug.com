@@ -19,12 +19,14 @@
     "coffee-script": "^1.7.1",
     "coffeeify": "^0.6.0",
     "del": "^0.1.1",
+    "dotenv": "0.4.0",
     "ejs": "^1.0.0",
     "express": "^4.0.0",
     "gulp": "^3.8.5",
     "gulp-browserify": "^0.5.0",
     "gulp-coffee": "^1.4.1",
     "gulp-ejs": "^0.2.2",
+    "gulp-jade": "^0.6.1",
     "gulp-livereload": "^2.1.0",
     "gulp-rename": "^1.2.0",
     "gulp-stylus": "^0.1.0",
@@ -32,19 +34,20 @@
     "handlebars": "^2.0.0-alpha.4",
     "hbs": "^2.7.0",
     "js-yaml": "^3.0.2",
+    "marked": "^0.3.2",
     "media-typer": "^0.2.0",
+    "nodemon": "^1.2.0",
     "octonode": "^0.6.3",
     "serve-favicon": "^2.0.1",
     "stylus": "^0.42.3",
     "watchjs": "0.0.0",
-    "win-spawn": "^2.0.0",
-    "nodemon": "^1.2.0",
-    "run-sequence": "^0.3.6"
+    "win-spawn": "^2.0.0"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/vikinghug/vikinghug.com"
   },
   "devDependencies": {
+    "run-sequence": "^0.3.6"
   }
 }

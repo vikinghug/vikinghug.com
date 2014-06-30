@@ -1,0 +1,154 @@
+doctype html
+html
+  head
+    title vikinghug.com
+    meta(name='viewport', content='initial-scale=1, maximum-scale=1')
+    link(rel='stylesheet', href='/assets/css/main.css')
+    script(src='/vendor/jquery/dist/jquery.min.js')
+  body
+    a#top.anchor
+
+    navigation
+      ul
+        li
+          a(href="#top") Tippy-top
+        li
+          a(href="#progress") Progress tracker
+        li
+          a(href="#download") How to download
+        li
+          a(href="#faq") FAQ
+        li
+          a(href="#contributors") Contributors
+    .main
+      header
+        .wrapper
+          h1 VikinghugUI
+      content
+        section.sub-header
+          .row
+            .small-12.medium-4.columns
+              .wrapper
+                img(src='/assets/img/community.png')
+                h2 Community Built
+                p
+                  | Driven by the community.
+                  br
+                  | Period.
+            .small-12.medium-4.columns
+              .wrapper
+                img(src='/assets/img/minimal.png')
+                h2 Minimal UI
+                p Sweet, a WildStar UI overhaul, without sacrificing usability!
+            .small-12.medium-4.columns
+              .wrapper
+                img(src='/assets/img/design.png')
+                h2 Design Focused
+                p
+                  | Do you love good design?
+                  br
+                  | So do we.
+          .row
+            .small-12.medium-12.columns
+              form(action='https://www.paypal.com/cgi-bin/webscr', method='post', target='_top')
+                input(type='hidden', name='cmd', value='_s-xclick')
+                input(type='hidden', name='hosted_button_id', value='UKF9PG4W2GDAU')
+                input(type='image', src='https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif', border='0', name='submit', alt='PayPal - The safer, easier way to pay online!')
+                img(alt='', border='0', src='https://www.paypalobjects.com/en_US/i/scr/pixel.gif', width='1', height='1')
+              small
+                em You don't have to donate, but it's definitely appreciated!
+        //- SECTION: PROGRESS TRACKER
+        a#progress.anchor
+        section.modules
+          //- section header
+          .row
+            .small-12.medium-12.columns.text-center
+              h2 Progress Tracker
+          .row
+            //- Module
+            .small-12.medium-10.small-center.columns
+              ul.no-bullet
+                | {{#each repos}}
+                li.module
+                  | {{#if recent_update}}recent-update{{/if}}
+                  h3.title
+                    i.fa.fa-github
+                    a(href='{{html_url}}') {{name}}
+                    | {{#if recent_update}}
+                    span.status recent updates
+                    | {{/if}}
+                  | {{#if open_issues_count}}
+                  a.issues(href='{{issues_url}}') {{open_issues_count}} issues
+                  | {{/if}}
+                | {{/each}}
+
+        //- SECTION: downloading
+        a#download.anchor
+        section.download
+          //- section header
+          .row
+            .small-12.medium-10.columns.small-center.text-center
+              h2 How to download
+
+              include:md ../data/download.md
+
+
+        //- SECTION: FAQ
+        a#faq.anchor
+        section.faq
+          //- section header
+          .row
+            .small-12.medium-10.columns.small-center.text-center
+              h2 FAQ
+
+              include:md ../data/faq.md
+
+
+        //- SECTION: CONTRIBUTORS
+        a#contributors.anchor
+        section.contributors
+          //- section header
+          .row
+            .small-12.columns.text-center
+              h2 Contributors
+          .row
+            | {{#each contributors}}
+            //- Person
+            .small-12.medium-4.columns.text-center
+              .panel
+                h3 {{name}}
+                h4 {{role}}
+                ul.no-bullet
+                  | {{#if website}}
+                  li.url
+                    a(href='http://{{website}}')
+                      i.fa.fa-link
+                      | {{website}}
+                  | {{/if}}
+                  | {{#if twitter}}
+                  li.twitter
+                    a(href='http://twitter.com/{{twitter}}')
+                      i.fa.fa-twitter-square
+                      | @{{twitter}}
+                  | {{/if}}
+                  | {{#if github}}
+                  li.github
+                    a(href='http://github.com/{{github}}')
+                      i.fa.fa-github
+                      | {{github}}
+                  | {{/if}}
+            | {{/each}}
+      footer
+        | vikinghug is affiliated with vikinghug, all rights preserved.
+    script(src='/assets/js/app.js')
+    script(type='text/javascript', src='//use.typekit.net/sxr1eag.js')
+    script.
+      //- teepskwat
+      try{Typekit.load();}catch(e){}
+      //- giggle
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      ga('create', 'UA-51903057-1', 'vikinghug.com');
+      ga('send', 'pageview');

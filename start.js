@@ -1,8 +1,12 @@
 #!/usr/bin/env node
 
-var util = require("util");
-var path = require('path');
-var spawn = require('win-spawn');
+// Environment Variables!
+var dotenv = require('dotenv');
+dotenv.load()
+
+var util  = require("util"),
+    path  = require('path'),
+    spawn = require('win-spawn');
 
 var basedir = path.join(__dirname, "node_modules", ".bin");
 var commandArray = [];
@@ -35,8 +39,10 @@ var runCommand = function(command, args) {
   });
 }
 
+console.log(">> NODE_ENV: " + process.env.NODE_ENV);
+
 runCommand("coffee", ['app.coffee']);
-if (process.env.ENVIRONMENT != "PRODUCTION") {
+if (process.env.NODE_ENV == "development") {
   runCommand("gulp", ['watch']);
 }
 

@@ -1,17 +1,24 @@
+// Environment Variables!
+var dotenv = require('dotenv');
+dotenv.load();
+
 // Gulpfile.js
 // Require the needed packages
-var gulp        = require('gulp'),
-    ejs         = require("gulp-ejs"),
-    gutil       = require('gulp-util'),
-    rename      = require('gulp-rename'),
-    stylus      = require('gulp-stylus'),
-    browserify  = require('gulp-browserify'),
-    del         = require('del'),
-    path        = require("path"),
-    runSequence = require('run-sequence');
+var gulp         = require('gulp'),
+    ejs          = require('gulp-ejs'),
+    gutil        = require('gulp-util'),
+    jade         = require('gulp-jade'),
+    rename       = require('gulp-rename'),
+    stylus       = require('gulp-stylus'),
+    browserify   = require('gulp-browserify'),
+    path         = require('path');
 
-if (process.env.ENVIRONMENT != "PRODUCTION") {
-  livereload = require('gulp-livereload');
+// var del, livereload, runSequence;
+
+if (process.env.NODE_ENV == "development") {
+  del         = require('del'),
+  livereload  = require('gulp-livereload'),
+  runSequence = require('run-sequence');
 }
 
 var baseAppPath = path.join(__dirname, 'app'),
@@ -26,6 +33,7 @@ var paths = {
   coffeeOutput: path.join(baseStaticPath, 'js'),
   cleanPath: path.join(baseStaticPath, '**', '*'),
   ejsPath:  [path.join(baseAppPath, '**', '*.ejs')],
+  jadePath:  [path.join(baseAppPath, '**', '*.jade')],
   assetsBasePath: baseAppPath,
   assetsPaths: [
     path.join(baseAppPath, 'img', '**', '*'),
@@ -42,7 +50,8 @@ var watchPaths = {
   ],
   coffee: [path.join(baseJsPath, '**', '*.coffee')],
   assets: paths.assetsPaths,
-  ejs: paths.ejsPath
+  ejs: paths.ejsPath,
+  jade: paths.jadePath
 }
 
 var testFiles = [
@@ -98,6 +107,16 @@ gulp.task('coffee', function() {
 
 
 //
+// Jade
+//
+
+gulp.task('jade', function() {
+  gulp.src(paths.jadePath)
+    .pipe(jade({ pretty: true }))
+    .pipe(gulp.dest(paths.assetsOutput))
+});
+
+//
 // EJS
 //
 
@@ -136,7 +155,7 @@ gulp.task('clean', function() {
 //
 
 gulp.task('watch-pre-tasks', function(callback) {
-  runSequence('clean','coffee',['stylus','assets','ejs'], callback);
+  return runSequence('clean',['coffee','stylus','assets','ejs','jade'], callback);
 });
 
 //
@@ -155,11 +174,14 @@ gulp.task('watch', ['watch-pre-tasks'], function(callback) {
   gulp.watch(watchPaths.ejs, ['ejs'])
     .on('error', gutil.log)
     .on('error', gutil.beep);
+  gulp.watch(watchPaths.jade, ['jade'])
+    .on('error', gutil.log)
+    .on('error', gutil.beep);
   if (livereload) {
-    livereload.listen({ silent: true });
+    livereload.listen();
     gulp.watch(path.join(baseStaticPath, '**')).on('change', livereload.changed);
   }
 
 });
 
-gulp.task('default', ['stylus', 'coffee', 'assets', 'ejs']);
+gulp.task('default', ['stylus', 'coffee', 'assets', 'ejs', 'jade']);
