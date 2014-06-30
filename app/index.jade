@@ -69,8 +69,7 @@ html
             .small-12.medium-10.small-center.columns
               ul.no-bullet
                 | {{#each repos}}
-                li.module
-                  | {{#if recent_update}}recent-update{{/if}}
+                li.module(class="{{#if recent_update}}recent-update{{/if}}")
                   h3.title
                     i.fa.fa-github
                     a(href='{{html_url}}') {{name}}
