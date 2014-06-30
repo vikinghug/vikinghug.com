@@ -43,5 +43,4 @@
 
 - name: squidd
   role: Miscellaneous & irc op
-  irc: squidd
   github: squidz
