@@ -77,7 +77,7 @@ class Github extends EventEmitter
     past = new Date(time).getTime()
     now  = new Date().getTime()
     delta = Math.abs(now - past) / 1000
-    return Math.floor(delta / 3600) % 24 < 12
+    return Math.floor(delta / 3600) < 12
 
   filterForBlacklist: (array) ->
     self = this
