@@ -42,6 +42,6 @@
   github: avongenesis
 
 - name: squidd
-  role: Misc/irc op
+  role: Miscellaneous & irc op
   irc: squidd
   github: squidz
