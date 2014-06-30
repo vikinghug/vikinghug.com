@@ -37,14 +37,14 @@
     "serve-favicon": "^2.0.1",
     "stylus": "^0.42.3",
     "watchjs": "0.0.0",
-    "win-spawn": "^2.0.0"
+    "win-spawn": "^2.0.0",
+    "nodemon": "^1.2.0",
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/vikinghug/vikinghug.com"
   },
   "devDependencies": {
-    "nodemon": "^1.2.0",
     "run-sequence": "^0.3.6"
   }
 }
