@@ -1,13 +1,14 @@
 // Gulpfile.js
 // Require the needed packages
-var gulp       = require('gulp'),
-    gutil      = require('gulp-util'),
-    clean      = require('gulp-clean'),
-    stylus     = require('gulp-stylus'),
-    browserify = require('gulp-browserify'),
-    rename     = require('gulp-rename'),
-    ejs        = require("gulp-ejs"),
-    path       = require("path");
+var gulp        = require('gulp'),
+    ejs         = require("gulp-ejs"),
+    gutil       = require('gulp-util'),
+    rename      = require('gulp-rename'),
+    stylus      = require('gulp-stylus'),
+    browserify  = require('gulp-browserify'),
+    del         = require('del'),
+    path        = require("path"),
+    runSequence = require('run-sequence');
 
 if (process.env.ENVIRONMENT != "PRODUCTION") {
   livereload = require('gulp-livereload');
@@ -23,6 +24,7 @@ var paths = {
   cssOutput: path.join(baseStaticPath, 'css'),
   coffeeInput: path.join(baseJsPath, 'app.coffee'),
   coffeeOutput: path.join(baseStaticPath, 'js'),
+  cleanPath: path.join(baseStaticPath, '**', '*'),
   ejsPath:  [path.join(baseAppPath, '**', '*.ejs')],
   assetsBasePath: baseAppPath,
   assetsPaths: [
@@ -70,13 +72,7 @@ gulp.task('test', function() {
 
 // Get and render all .styl files recursively
 gulp.task('stylus', function () {
-  gulp.src(paths.cssInput)
-    .pipe(stylus()
-      .on('error', gutil.log)
-      .on('error', gutil.beep))
-    .pipe(gulp.dest(paths.cssOutput));
-
-  gulp.src(path.join(baseCssPath, "old.styl"))
+  return gulp.src(paths.cssInput)
     .pipe(stylus()
       .on('error', gutil.log)
       .on('error', gutil.beep))
@@ -89,7 +85,7 @@ gulp.task('stylus', function () {
 //
 
 gulp.task('coffee', function() {
-  gulp.src(paths.coffeeInput, { read: false })
+  return gulp.src(paths.coffeeInput, { read: false })
     .pipe(browserify({
       basedir: __dirname,
       transform: ['coffeeify'],
@@ -106,7 +102,7 @@ gulp.task('coffee', function() {
 //
 
 gulp.task('ejs', function() {
-  gulp.src(paths.ejsPath)
+  return gulp.src(paths.ejsPath)
     .pipe(ejs()
       .on('error', gutil.log)
       .on('error', gutil.beep))
@@ -119,7 +115,7 @@ gulp.task('ejs', function() {
 //
 
 gulp.task('assets', function() {
-  gulp.src(paths.assetsPaths, {base: paths.assetsBasePath})
+  return gulp.src(paths.assetsPaths, {base: paths.assetsBasePath})
     .on('error', gutil.log)
     .on('error', gutil.beep)
     .pipe(gulp.dest(paths.assetsOutput));
@@ -127,19 +123,26 @@ gulp.task('assets', function() {
 
 
 //
-// Clean
+// clean
 //
 
 gulp.task('clean', function() {
-  gulp.src(path.join(baseStaticPath, '**', '*'), {read: false})
-    .pipe(clean());
+  return del(paths.cleanPath, { sync: true });
 });
 
 
 //
+// Watch pre-tasks
+//
+
+gulp.task('watch-pre-tasks', function(callback) {
+  runSequence('clean','coffee',['stylus','assets','ejs'], callback);
+});
+
+//
 // Watch
 //
-gulp.task('watch', ['clean','stylus','coffee','assets','ejs'], function() {
+gulp.task('watch', ['watch-pre-tasks'], function(callback) {
   gulp.watch(watchPaths.css, ['stylus'])
     .on('error', gutil.log)
     .on('error', gutil.beep);
@@ -153,11 +156,10 @@ gulp.task('watch', ['clean','stylus','coffee','assets','ejs'], function() {
     .on('error', gutil.log)
     .on('error', gutil.beep);
   if (livereload) {
-    var server = livereload();
-    gulp.watch(path.join(baseStaticPath, '**')).on('change', function(file) {
-      server.changed(file.path);
-    });
+    livereload.listen();
+    gulp.watch(path.join(baseStaticPath, '**')).on('change', livereload.changed);
   }
+
 });
 
 gulp.task('default', ['stylus', 'coffee', 'assets', 'ejs']);

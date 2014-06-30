@@ -28,14 +28,17 @@ var runCommand = function(command, args) {
   cmd.stderr.on('data', function(data) {
     util.print(data);
   });
+
   cmd.on('close', function(code) {
     util.print('Child process exited with code: ', code, "\n");
     die(cmd);
   });
 }
 
-runCommand("coffee", ['app.coffee']);
 if (process.env.ENVIRONMENT != "PRODUCTION") {
+  runCommand("nodemon", ['app.coffee']);
   runCommand("gulp", ['watch']);
+} else {
+  runCommand("coffee", ['app.coffee']);
 }
 
