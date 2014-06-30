@@ -1,0 +1,42 @@
+
+- name: vikinghug
+  role: Viking stuff
+  website: itsthatguy.com
+  twitter: itg
+  github: itsthatguy
+
+- name: Crowdedlight
+  role: Community Management / Test Lead
+  twitter: Crowdedlight
+  github: Crowdedlight
+
+- name: Iglo
+  role: Importing
+  website: finding-waldo.eu
+  twitter: revoltlives
+  github: revoltlive
+
+- name: Eliar
+  role: Graphics & pants stealing
+  github: Eliar
+
+- name: Tyu
+  role: Testing & Feedback
+  twitter: cuktis
+
+- name: sevelev
+  role: Testing & Feedback
+  github: sevelev
+
+
+- name: haakuturi
+  role: Miscellaneous
+  website: haakuturi.com
+  twitter: haakuturi
+  github: haakuturi
+
+- name: AvonGenesis
+  role: Miscellaneous
+  website: juliantith.com
+  twitter: avongenesis
+  github: avongenesis

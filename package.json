@@ -8,7 +8,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node start.js",
+    "start": "node_modules/.bin/nodemon start.js",
     "postinstall": "node postinstall.js"
   },
   "author": "",
@@ -30,8 +30,13 @@
     "gulp-stylus": "^0.1.0",
     "gulp-util": "^2.2.14",
     "handlebars": "^2.0.0-alpha.4",
+    "hbs": "^2.7.0",
+    "js-yaml": "^3.0.2",
     "media-typer": "^0.2.0",
+    "octonode": "^0.6.3",
+    "serve-favicon": "^2.0.1",
     "stylus": "^0.42.3",
+    "watchjs": "0.0.0",
     "win-spawn": "^2.0.0"
   },
   "repository": {

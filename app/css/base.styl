@@ -25,7 +25,7 @@ h1, h2, h3, h4, h5 {
 }
 
 a {
-  transition: color .3s ease;
+  transition: all .3s ease;
   color: light-grey;
   text-decoration: none;
   &:hover {
@@ -81,11 +81,20 @@ header {
 }
 
 
-screen-color(color) {
-  h3 { color: color; }
-  .screen > span {
-    box-shadow: 0 0 0 1px color;
+screen-color(color, border-size = 2px) {
+  i:before { color: color; }
+  h3 a {
+    box-shadow: 0 0 0 border-size transparent;
     color: color;
+    z-index: 300;
+    &:hover {
+      background: color;
+      box-shadow: 0 0 0 border-size color;
+      color: purple;
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+
   }
 }
 
@@ -114,126 +123,63 @@ list-item(icon, color) {
 // ******************************************************************
 .modules { padding-top: 100px; }
 .module {
-  .screen {
-    background-color: purple;
-    width: 100%;
-    height: 200px;
-    position: relative;
+  border-bottom: 1px solid purple;
+  margin-bottom: 10px;
+  screen-color(light-grey);
+  margin: 0;
+  text-align: left;
+  clear: both;
+  position: relative;
 
-    &.black {
-      screen-background-color(transparent);
-      box-shadow: 0 0 0 1px rgba(light-purple, .1);
-      h3 {
-        display: block;
-        position: absolute;
-        font-size: 20px;
-        text-align: center;
-        top: 50%;
-        margin-top: -1.4em;
-        padding: 10px;
-        left: 10px;
-        right: 10px;
-        z-index: 2;
-      }
-    }
-
+  .issues {
+    border-radius: 1000px;
+    box-shadow: 0 0 0 1px light-purple;
+    color: light-purple;
     &:hover {
-      .overlay { opacity: 1; }
+      box-shadow: 0 0 0 1px light-grey;
+      background-color: light-grey;
+      color: black;
     }
-
-    .overlay {
-      transition: opacity .3s ease;
-      position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-      background-color: rgba(black, .95);
-      z-index: 10;
-      opacity: 0;
-      padding: 40px 20px 20px;
-
-      ul {
-        line-height: 1.6;
-        li {
-          color: light-purple;
-
-          &.done {
-            list-item($fa-var-check, green);
-            span { text-decoration: line-through; }
-          }
-
-          &.in-progress {
-            list-item($fa-var-clock-o, yellow);
-          }
-
-        }
-      }
-    }
-
-    > span {
-      display: block;
-      position: absolute;
-      font-size: 20px;
-      text-align: center;
-      top: 50%;
-      margin-top: -1em;
-      padding: 10px;
-      left: 30px;
-      right: 30px;
-      z-index: 2;
-    }
+    position: absolute;
+    font-size: .6em;
+    text-transform: uppercase;
+    right: 0;
+    padding: 4px 10px;
+    top: 47%;
+    margin-top: -1em;
   }
 
+
+  .status {
+    display: inline-block;
+    color: light-purple !important;
+    font-size: .5em;
+    text-align: center;
+    line-height: 1;
+    left: 20px;
+    top: .8em;
+    position: absolute;
+    text-transform: uppercase;
+  }
+
+
+  &.recent-update {
+    screen-color(green);
+  }
   &.in-progress {
     screen-color(yellow);
   }
-
   &.done {
     screen-color(green);
   }
-
   &.not-started {
     screen-color(rgba(light-grey, .4));
   }
 
-  .title a {
-    position: relative;
 
-    &:before,
-    &:after {
-      transition: margin 0.3s ease,
-                  opacity 0.2s ease;
-      display: inline-block;
-      position: absolute;
-      opacity: 0;
-    }
 
-    &:before {
-      left: 0;
-      margin-left: 0;
-      content: '[';
-    }
 
-    &:after {
-      right: 0;
-      margin-right: 0;
-      content: ']';
-    }
-
-    &:hover,
-    &:focus {
-      .fa:before { color: green; }
-      &:before,
-      &:after {
-        opacity: 1;
-        margin-left: -20px;
-        margin-right: -20px;
-      }
-    }
-  }
-
-  margin-bottom: column-gutter;
+  .title a { position: relative; }
 }
 
 .screen {

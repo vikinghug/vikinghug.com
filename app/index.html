@@ -4,6 +4,7 @@
   <title>vikinghug.com</title>
   <meta name="viewport" content="initial-scale=1, maximum-scale=1">
   <link rel="stylesheet" href="/assets/css/main.css">
+  <script src="/vendor/jquery/dist/jquery.min.js"></script>
 </head>
 <body>
   <div class="main">
@@ -70,194 +71,26 @@
         </div>
 
 
-        <!-- Module -->
+
+
         <div class="row">
-          <div class="small-12 medium-3 columns">
-            <div class="module in-progress">
-              <div class="screen target-frame">
-                <div class="overlay">
-                  <ul class="no-bullet">
-                    <li class="in-progress"><span>Mockups</span></li>
-                    <li class="done"><span>Duplicated Addon</span></li>
-                    <li class="in-progress"><span>Integration</span></li>
-                    <li class="in-progress"><span>Testing</span></li>
-                  </ul>
-                </div>
-                <span>In Progress</span>
-              </div>
-              <h3 class="title"><a href="https://github.com/vikinghug/VikingTargetFrame"><i class="fa fa-github"></i> TargetFrame</a></h3>
-            </div>
-          </div>
-
           <!-- Module -->
-          <div class="small-12 medium-3 columns">
-            <div class="module in-progress">
-              <div class="screen">
-                <div class="overlay">
-                  <ul class="no-bullet">
-                    <li class="in-progress"><span>Mockups</span></li>
-                    <li class="done"><span>Duplicated Addon</span></li>
-                    <li class="in-progress"><span>Integration</span></li>
-                    <li class="in-progress"><span>Testing</span></li>
-                  </ul>
-                </div>
-                <span>In Progress</span>
-              </div>
-              <h3 class="title"><a href="https://github.com/vikinghug/VikingClassResources"><i class="fa fa-github"></i> ClassResources</a></h3>
-            </div>
-          </div>
+          <div class="small-12 medium-10 small-center columns">
+            <ul class="no-bullet">
+              {{#each repos}}
+              <li class="module {{#if recent_update}}recent-update{{/if}}">
 
-          <!-- Module -->
-          <div class="small-12 medium-3 columns">
-            <div class="module in-progress">
-              <div class="screen">
-                <div class="overlay">
-                  <ul class="no-bullet">
-                    <li class="in-progress"><span>Mockups</span></li>
-                    <li class="done"><span>Duplicated Addon</span></li>
-                    <li class="in-progress"><span>Integration</span></li>
-                    <li class="in-progress"><span>Testing</span></li>
-                  </ul>
-                </div>
-                <span>In Progress</span>
-              </div>
-              <h3 class="title"><a href="https://github.com/vikinghug/VikingStalkerResources"><i class="fa fa-github"></i> StalkerResources</a></h3>
-            </div>
-          </div>
+                <h3 class="title"><i class="fa fa-github"></i><a href="{{html_url}}">{{name}}</a>
+                {{#if recent_update}}<span class="status">recent updates</span>{{/if}}
+                </h3>
 
-          <!-- Module -->
-          <div class="small-12 medium-3 columns">
-            <div class="module in-progress">
-              <div class="screen">
-                <div class="overlay">
-                  <ul class="no-bullet">
-                    <li class="in-progress"><span>Mockups</span></li>
-                    <li class="done"><span>Duplicated Addon</span></li>
-                    <li class="in-progress"><span>Integration</span></li>
-                    <li class="in-progress"><span>Testing</span></li>
-                  </ul>
-                </div>
-                <span>In Progress</span>
-              </div>
-              <h3 class="title"><a href="https://github.com/vikinghug/VikingWarriorResources"><i class="fa fa-github"></i> WarriorResources</a></h3>
-            </div>
-          </div>
+                {{#if open_issues_count}}
+                  <a href="{{issues_url}}" class="issues">{{open_issues_count}} issues</a>
+                {{/if}}
+              </li>
+              {{/each}}
 
-          <!-- Module -->
-          <div class="small-12 medium-3 columns">
-            <div class="module in-progress">
-              <div class="screen">
-                <div class="overlay">
-                  <ul class="no-bullet">
-                    <li class="in-progress"><span>Mockups</span></li>
-                    <li class="done"><span>Duplicated Addon</span></li>
-                    <li class="in-progress"><span>Integration</span></li>
-                    <li class=""><span>Testing</span></li>
-                  </ul>
-                </div>
-                <span>In Progress</span>
-              </div>
-              <h3 class="title"><a href="https://github.com/vikinghug/VikingInventory"><i class="fa fa-github"></i> Inventory</a></h3>
-            </div>
-          </div>
-
-          <!-- Module -->
-          <div class="small-12 medium-3 columns">
-            <div class="module in-progress">
-              <div class="screen">
-                <div class="overlay">
-                  <ul class="no-bullet">
-                    <li class="in-progress"><span>Mockups</span></li>
-                    <li class="done"><span>Duplicated Addon</span></li>
-                    <li class="in-progress"><span>Integration</span></li>
-                    <li class=""><span>Testing</span></li>
-                  </ul>
-                </div>
-                <span>In Progress</span>
-              </div>
-              <h3 class="title"><a href="https://github.com/vikinghug/VikingActionBarSet"><i class="fa fa-github"></i> ActionBarSet</a></h3>
-            </div>
-          </div>
-
-          <!-- Module -->
-          <div class="small-12 medium-3 columns">
-            <div class="module in-progress">
-              <div class="screen">
-                <div class="overlay">
-                  <ul class="no-bullet">
-                    <li class=""><span>Mockups</span></li>
-                    <li class="done"><span>Duplicated Addon</span></li>
-                    <li class="in-progress"><span>Integration</span></li>
-                    <li class="in-progress"><span>Testing</span></li>
-                  </ul>
-                </div>
-                <span>In Progress</span>
-              </div>
-              <h3 class="title"><a href="https://github.com/vikinghug/VikingGroupFrame"><i class="fa fa-github"></i> GroupFrame</a></h3>
-            </div>
-          </div>
-
-          <!-- Module -->
-          <div class="small-12 medium-3 columns">
-            <div class="module in-progress">
-              <div class="screen">
-                <div class="overlay">
-                  <ul class="no-bullet">
-                    <li class=""><span>Mockups</span></li>
-                    <li class="done"><span>Duplicated Addon</span></li>
-                    <li class="in-progress"><span>Integration</span></li>
-                    <li class=""><span>Testing</span></li>
-                  </ul>
-                </div>
-                <span>In Progress</span>
-              </div>
-              <h3 class="title"><a href="https://github.com/vikinghug/VikingRaidFrame"><i class="fa fa-github"></i> RaidFrame</a></h3>
-            </div>
-          </div>
-
-          <!-- Module -->
-          <div class="small-12 medium-3 columns">
-            <div class="module in-progress">
-              <div class="screen">
-                <div class="overlay">
-                  <ul class="no-bullet">
-                    <li class=""><span>Mockups</span></li>
-                    <li class="done"><span>Duplicated Addon</span></li>
-                    <li class="in-progress"><span>Integration</span></li>
-                    <li class=""><span>Testing</span></li>
-                  </ul>
-                </div>
-                <span>In Progress</span>
-              </div>
-              <h3 class="title"><a href="https://github.com/vikinghug/VikingNamePlates"><i class="fa fa-github"></i> NamePlates</a></h3>
-            </div>
-          </div>
-
-          <!-- Module -->
-          <div class="small-12 medium-3 columns">
-            <div class="module in-progress">
-              <div class="screen">
-                <div class="overlay">
-                  <ul class="no-bullet">
-                    <li class=""><span>Mockups</span></li>
-                    <li class="done"><span>Duplicated Addon</span></li>
-                    <li class="in-progress"><span>Integration</span></li>
-                    <li class=""><span>Testing</span></li>
-                  </ul>
-                </div>
-                <span>In Progress</span>
-              </div>
-              <h3 class="title"><a href="https://github.com/vikinghug/VikingQuestTrackerSet"><i class="fa fa-github"></i> QuestTrackerSet</a></h3>
-            </div>
-          </div>
-
-          <!-- Module -->
-          <div class="small-12 medium-3 columns">
-            <div class="module not-started">
-              <div class="screen black">
-              <h3>More to come...</h3>
-              </div>
-            </div>
+            </ul>
           </div>
         </div>
       </section>
@@ -274,113 +107,20 @@
 
         <div class="row">
 
-          <!-- Person -->
-          <div class="small-6 columns text-center">
-            <div class="panel">
-              <h3>Vikinghug</h3>
-              <h4>Viking stuff</h4>
-              <ul class="no-bullet">
-                <li class="url"><a href="http://itsthatguy.com"><i class="fa fa-link"></i> itsthatguy.com</a></li>
-                <li class="twitter"><a href="http://twitter.com/itg"><i class="fa fa-twitter-square"></i> @itg</a></li>
-                <li class="github"><a href="http://github.com/itsthatguy"><i class="fa fa-github"></i> itsthatguy</a></li>
-              </ul>
+          {{#each contributors}}
+            <!-- Person -->
+            <div class="small-6 columns text-center">
+              <div class="panel">
+                <h3>{{name}}</h3>
+                <h4>{{role}}</h4>
+                <ul class="no-bullet">
+                  {{#if website}}<li class="url"><a href="http://{{website}}"><i class="fa fa-link"></i> {{website}}</a></li>{{/if}}
+                  {{#if twitter}}<li class="twitter"><a href="http://twitter.com/{{twitter}}"><i class="fa fa-twitter-square"></i> @{{twitter}}</a></li>{{/if}}
+                  {{#if github}}<li class="github"><a href="http://github.com/{{github}}"><i class="fa fa-github"></i> {{github}}</a></li>{{/if}}
+                </ul>
+              </div>
             </div>
-          </div>
-
-          <!-- Person -->
-          <div class="small-6 columns text-center">
-            <div class="panel">
-              <h3>Iglo</h3>
-              <h4>Importing</h4>
-              <ul class="no-bullet">
-                <li class="url"><a href="http://finding-waldo.eu"><i class="fa fa-link"></i> finding-waldo.eu</a></li>
-                <li class="twitter"><a href="http://twitter.com/revoltlives"><i class="fa fa-twitter-square"></i> @revoltlives</a></li>
-                <li class="github"><a href="http://github.com/revoltlive"><i class="fa fa-github"></i> revoltlive</a></li>
-              </ul>
-            </div>
-          </div>
-
-          <!-- Person -->
-          <div class="small-6 columns text-center">
-            <div class="panel">
-              <h3>haakuturi</h3>
-              <h4>Documentation</h4>
-              <ul class="no-bullet">
-                <li class="url"><a href="http://haakuturi.com"><i class="fa fa-link"></i> haakuturi.com</a></li>
-                <li class="twitter"><a href="http://twitter.com/haakuturi"><i class="fa fa-twitter-square"></i> @haakuturi</a></li>
-                <li class="github"><a href="http://github.com/haakuturi"><i class="fa fa-github"></i> haakuturi</a></li>
-              </ul>
-            </div>
-          </div>
-
-          <!-- Person -->
-          <div class="small-6 columns text-center">
-            <div class="panel">
-              <h3>AvonGenesis</h3>
-              <h4>Website Maintainer</h4>
-              <ul class="no-bullet">
-                <li class="url"><a href="http://juliantith.com"><i class="fa fa-link"></i> juliantith.com</a></li>
-                <li class="twitter"><a href="http://twitter.com/avongenesis"><i class="fa fa-twitter-square"></i> @avongenesis</a></li>
-                <li class="github"><a href="http://github.com/avongenesis"><i class="fa fa-github"></i> avongenesis</a></li>
-              </ul>
-            </div>
-          </div>
-
-          <!-- Person -->
-          <div class="small-6 columns text-center">
-            <div class="panel">
-              <h3>Crowdedlight</h3>
-              <h4>Documentation / Cloning</h4>
-              <ul class="no-bullet">
-                <li class="twitter"><a href="http://twitter.com/Crowdedlight"><i class="fa fa-twitter-square"></i> @Crowdedlight</a></li>
-                <li class="github"><a href="http://github.com/Crowdedlight"><i class="fa fa-github"></i> Crowdedlight</a></li>
-              </ul>
-            </div>
-          </div>
-
-          <!-- Person -->
-          <div class="small-6 columns text-center">
-            <div class="panel">
-              <h3>Eliar</h3>
-              <h4>Graphics &amp; pants stealing</h4>
-              <ul class="no-bullet">
-                <li class="github"><a href="http://github.com/Eliar"><i class="fa fa-github"></i> Eliar</a></li>
-              </ul>
-            </div>
-          </div>
-
-          <!-- Person -->
-          <div class="small-6 columns text-center">
-            <div class="panel">
-              <h3>Tyu</h3>
-              <h4>Testing &amp; Feedback</h4>
-              <ul class="no-bullet">
-                <li class="twitter"><a href="http://twitter.com/cuktis"><i class="fa fa-twitter-square"></i> cuktis</a></li>
-              </ul>
-            </div>
-          </div>
-
-          <!-- Person -->
-          <div class="small-6 columns text-center">
-            <div class="panel">
-              <h3>sevelev</h3>
-              <h4>Testing &amp; Feedback</h4>
-              <ul class="no-bullet">
-                <li class="github"><a href="http://github.com/sevelev"><i class="fa fa-github"></i> sevelev</a></li>
-              </ul>
-            </div>
-          </div>
-
-          <!-- Person -->
-          <div class="small-6 columns text-center">
-            <div class="panel">
-              <h3>Mormur</h3>
-              <h4>Importing &amp; Development</h4>
-              <ul class="no-bullet">
-                <li class="github"><a href="http://github.com/cstyan"><i class="fa fa-github"></i> cstyan</a></li>
-              </ul>
-            </div>
-          </div>
+          {{/each}}
 
         </div>
       </section>
@@ -394,7 +134,6 @@
 
   </div>
 
-  <script src="/vendor/jquery/dist/jquery.min.js"></script>
   <script src="/assets/js/app.js"></script>
   <script type="text/javascript" src="//use.typekit.net/sxr1eag.js"></script>
   <script type="text/javascript">
