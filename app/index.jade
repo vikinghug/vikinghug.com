@@ -13,15 +13,25 @@ html
         span Menu
       ul
         li
-          a(href="#top") Tippy-top
+          a(href="#top")
+            i.icon-skull
+            | Tippy-top
         li
-          a(href="#progress") Progress tracker
+          a(href="#progress")
+            i.icon-meter
+            | Progress tracker
         li
-          a(href="#download") How to download
+          a(href="#download")
+            i.icon-terminal
+            | How to download
         li
-          a(href="#faq") FAQ
+          a(href="#faq")
+            i.icon-faqs
+            | FAQ
         li
-          a(href="#contributors") Contributors
+          a(href="#contributors")
+            i.icon-contribute
+            | Contributors
     .main
       header
         .wrapper
@@ -65,7 +75,9 @@ html
           //- section header
           .row
             .small-12.medium-12.columns.text-center
-              h2 Progress Tracker
+              h2
+                i.icon-meter
+                | Progress Tracker
           .row
             //- Module
             .small-12.medium-10.small-center.columns
@@ -89,7 +101,9 @@ html
           //- section header
           .row
             .small-12.medium-10.columns.small-center.text-center
-              h2 How to download
+              h2
+                i.icon-terminal
+                | How to download
 
               include:md ../data/download.md
 
@@ -100,7 +114,9 @@ html
           //- section header
           .row
             .small-12.medium-10.columns.small-center.text-center
-              h2 FAQ
+              h2
+                i.icon-faqs
+                | FAQ
 
               include:md ../data/faq.md
 
@@ -111,7 +127,9 @@ html
           //- section header
           .row
             .small-12.columns.text-center
-              h2 Contributors
+              h2
+                i.icon-contribute
+                | Contributors
           .row
             | {{#each contributors}}
             //- Person
