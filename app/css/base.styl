@@ -15,6 +15,20 @@ body {
   background-color: black;
   font-size: 16px;
   line-height: 1.2;
+
+  &.top {
+    navigation {
+      background: transparent;
+      position: absolute;
+    }
+  }
+
+  &.open {
+    navigation {
+      height: 100%;
+      background: rgba(purple, .98);
+    }
+  }
 }
 
 .main {}
@@ -39,29 +53,40 @@ a {
   }
 }
 
-
 //
 // NAVIGATION
 // ******************************************************************
 navigation {
+  transition: all .3s ease;
   position: fixed;
-  background: rgba(purple, .98);
+  background:  rgba(purple, .98);
   display: block;
   text-align: center;
-  padding: 1.5em 0 1.8em;
+  height: 60px;
+  overflow: hidden;
+  padding: 0.8em 0 1em;
   left: 0;
   right: 0;
   top: 0;
   z-index: 1000;
+
+
+  .menu {
+    inline-icon: 'hamburger';
+    display: block;
+    font-size: 1.6em;
+    text-align: right;
+    margin-right: 20px;
+    span { display: none; }
+  }
+
   ul {
-    display: inline-block;
-    margin: 0 auto;
     list-style-type: none;
     padding: 0;
 
     li {
-      display: inline-block;
-      margin-right: 2em;
+      display: block;
+      margin: 0.5em 1em;
       &:last-child { margin-right: 0; }
       a {
         font-family: header-font;
@@ -78,6 +103,20 @@ navigation {
         }
       }
     }
+  }
+
+  @media medium-up {
+
+    padding: 1.5em 0 1.8em;
+
+    .menu { display: none; }
+
+    ul {
+      height: auto;
+      opacity: 1;
+      li { display: inline-block; }
+    }
+
   }
 }
 
@@ -168,18 +207,6 @@ screen-background-color(color) {
   }
 }
 
-list-item(icon, color) {
-  @extend .fa;
-  line-height: 1.6;
-  display: block;
-  color: color;
-  &:before {
-    margin-right: 6px;
-    font-size: .8em;
-    line-height: 1.25;
-    content: icon;
-  }
-}
 
 //
 // MODULES

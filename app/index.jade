@@ -9,6 +9,8 @@ html
     a#top.anchor
 
     navigation
+      a.menu
+        span Menu
       ul
         li
           a(href="#top") Tippy-top
@@ -71,7 +73,7 @@ html
                 | {{#each repos}}
                 li.module(class="{{#if recent_update}}recent-update{{/if}}")
                   h3.title
-                    i.fa.fa-github
+                    i.icon-github
                     a(href='{{html_url}}') {{name}}
                     | {{#if recent_update}}
                     span.status recent updates
@@ -121,19 +123,19 @@ html
                   | {{#if website}}
                   li.url
                     a(href='http://{{website}}')
-                      i.fa.fa-link
+                      i.icon-link
                       | {{website}}
                   | {{/if}}
                   | {{#if twitter}}
                   li.twitter
                     a(href='http://twitter.com/{{twitter}}')
-                      i.fa.fa-twitter-square
+                      i.icon-twitter
                       | @{{twitter}}
                   | {{/if}}
                   | {{#if github}}
                   li.github
                     a(href='http://github.com/{{github}}')
-                      i.fa.fa-github
+                      i.icon-github
                       | {{github}}
                   | {{/if}}
             | {{/each}}
