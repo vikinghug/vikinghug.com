@@ -111,7 +111,7 @@ gulp.task('coffee', function() {
 //
 
 gulp.task('jade', function() {
-  gulp.src(paths.jadePath)
+  return gulp.src(paths.jadePath)
     .pipe(jade({ pretty: true }))
     .pipe(gulp.dest(paths.assetsOutput))
 });
@@ -155,13 +155,14 @@ gulp.task('clean', function() {
 //
 
 gulp.task('watch-pre-tasks', function(callback) {
-  return runSequence('clean',['coffee','stylus','assets','ejs','jade'], callback);
+  runSequence('clean',['coffee','stylus','assets','ejs','jade'], callback);
 });
 
 //
 // Watch
 //
-gulp.task('watch', ['watch-pre-tasks'], function(callback) {
+gulp.task('watch', function(callback) {
+
   gulp.watch(watchPaths.css, ['stylus'])
     .on('error', gutil.log)
     .on('error', gutil.beep);
@@ -177,11 +178,11 @@ gulp.task('watch', ['watch-pre-tasks'], function(callback) {
   gulp.watch(watchPaths.jade, ['jade'])
     .on('error', gutil.log)
     .on('error', gutil.beep);
+
   if (livereload) {
-    livereload.listen();
+    livereload.listen({ silent: true });
     gulp.watch(path.join(baseStaticPath, '**')).on('change', livereload.changed);
   }
-
 });
 
 gulp.task('default', ['stylus', 'coffee', 'assets', 'ejs', 'jade']);
