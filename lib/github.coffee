@@ -1,3 +1,4 @@
+_            = require('underscore')
 path         = require('path')
 fs           = require('fs')
 github       = require('octonode')
@@ -8,7 +9,17 @@ callWatchers = WatchJS.callWatchers
 EventEmitter = require('events').EventEmitter
 
 # this is a generic token
-client = github.client("b88ebd287229cba593058175b38b059b13af6034")
+# 894b9db89f78b7142263966c69cabf63cec31a19
+# d34475bc0818fbc70158f0aca9a488523a6d4470
+# Nimmock: 96234b48504bcb43a1d0a9e11cd7e596b45f4e54
+# Mormur: 16cd039c3347e9689bf2e7d3eccdcfb627bec2fc
+# fasma: 3fe23a32720c1d08a38dc488c3e5128ea809fdaa
+keys = [
+  "894b9db89f78b7142263966c69cabf63cec31a19"
+  "96234b48504bcb43a1d0a9e11cd7e596b45f4e54"
+  "16cd039c3347e9689bf2e7d3eccdcfb627bec2fc"
+  "3fe23a32720c1d08a38dc488c3e5128ea809fdaa"]
+client = github.client(keys[Math.floor(Math.random() * keys.length + 1)])
 
 class Github extends EventEmitter
 
@@ -22,8 +33,9 @@ class Github extends EventEmitter
   ]
 
   repos: []
+  owner: null
 
-  constructor: -> return
+  constructor: (owner) -> @owner = owner
 
   setRepos: (repos) -> @repos = repos
 
@@ -35,8 +47,8 @@ class Github extends EventEmitter
         return i
     return null
 
-  getRepos: (owner) ->
-    org = client.org(owner)
+  getRepos: ->
+    org = client.org(@owner)
     org.repos (err, array, headers) =>
       if err
         console.log err
@@ -48,6 +60,9 @@ class Github extends EventEmitter
 
       @sort(@repos)
 
+  setUpdated: (payload, updated, tooltip) ->
+    payload.tooltip = tooltip
+    payload.recent_update = updated
 
   initRepo: (repo, i) ->
     payload =
@@ -59,7 +74,10 @@ class Github extends EventEmitter
       issues_url        : "#{repo.html_url}/issues"
       open_issues_count : repo.open_issues_count
       pushed_at         : repo.pushed_at
-      recent_update     : @checkForRecentUpdate(repo.pushed_at)
+      recent_update     : false
+      tooltip           : null
+
+    @checkForRecentUpdate(payload, @setUpdated.bind(payload))
 
     index = @findRepo(repo)
     if index?
@@ -67,17 +85,22 @@ class Github extends EventEmitter
     else
       @repos.push(payload)
 
-
     self = @
-    watch payload, "pushed_at", (key, command, data) ->
+    watch payload, "recent_update", (key, command, data) ->
       self.emit("UPDATE", this)
     @emit("UPDATE", payload)
 
-  checkForRecentUpdate: (time) ->
-    past = new Date(time).getTime()
-    now  = new Date().getTime()
-    delta = Math.abs(now - past) / 1000
-    return Math.floor(delta / 3600) < 12
+  checkForRecentUpdate: (payload, callback) ->
+    try
+      repo = client.repo("#{@owner}/#{payload.name}")
+      repo.commit 'master', (err, data, headers) =>
+        past = new Date(data.commit.author.date).getTime()
+        now  = new Date().getTime()
+        delta = Math.abs(now - past) / 1000
+        callback(payload, Math.floor(delta / 3600) < 12, data.commit.message)
+    catch err
+      console.log err
+
 
   filterForBlacklist: (array) ->
     self = this
@@ -104,4 +127,4 @@ class Github extends EventEmitter
 
 
 
-module.exports = new Github()
+module.exports = Github

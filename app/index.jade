@@ -99,6 +99,9 @@ html
                     a(href='{{html_url}}') {{name}}
                     | {{#if recent_update}}
                     span.status recent updates
+                    .tooltip
+                      .outer
+                        .inner {{tooltip}}
                     | {{/if}}
                   | {{#if open_issues_count}}
                   a.issues(href='{{issues_url}}') {{open_issues_count}} issues

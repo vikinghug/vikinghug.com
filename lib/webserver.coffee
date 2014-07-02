@@ -23,11 +23,12 @@ app.use('/vendor', express.static(vendorPath))
 port = process.env.PORT || 3002
 webserver.listen(port)
 
-gh = require('./github.coffee')
-gh.getRepos("vikinghug")
+Github = require('./github.coffee')
+gh = new Github("vikinghug")
+gh.getRepos()
 setInterval ->
-  gh.getRepos("vikinghug")
-, 10000
+  gh.getRepos()
+, 20000
 
 getDataFile = (file) ->
   try
@@ -44,6 +45,9 @@ app.get /^\/(\w+)(?:\.)?(\w+)?/, (req, res) ->
   path = req.params[0]
   ext  = req.params[1] ? "html"
   res.render(basePath + "/.generated/#{path}.#{ext}")
+
+app.get '/api/repos', (req, res) ->
+
 
 
 

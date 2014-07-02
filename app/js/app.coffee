@@ -38,4 +38,8 @@ $ ->
     _gotoAnchor($(e.currentTarget))
 
 
+  $.each $('.title'), ->
+    offset = $(this).find('a').outerWidth()
+    $(this).find('.tooltip').css('left', offset)
+
   $(document).on 'scroll', _handleScroll
