@@ -12,10 +12,10 @@ $ ->
   closeMenu = -> $('body').removeClass('open')
 
   handleScroll = ->
-    if $(this).scrollTop() <= 0
-      $('body').addClass('top')
+    if $(this).scrollTop() <= 10
+      $('body').removeClass('scrolled')
     else
-      $('body').removeClass('top')
+      $('body').addClass('scrolled')
 
   gotoAnchor = ($el) ->
     position = $($el.attr('href')).offset().top
