@@ -180,8 +180,13 @@ gulp.task('watch', function(callback) {
     .on('error', gutil.beep);
 
   if (livereload) {
-    livereload.listen({ silent: true });
-    gulp.watch(path.join(baseStaticPath, '**')).on('change', livereload.changed);
+    var server = livereload.listen({ silent: true });
+    if (server) {
+      gutil.log('[LiveReload] Now listening on port: ' + server.port);
+      livereload.changed();
+    }
+    gulp.watch(path.join(baseStaticPath, '**'))
+      .on('change', livereload.changed);
   }
 });
 

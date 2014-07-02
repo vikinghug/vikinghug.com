@@ -25,9 +25,17 @@ html
             i.icon-terminal
             | How to download
         li
+          a(href="#connected")
+            i.icon-pulse
+            | Get Connected
+        li
           a(href="#faq")
             i.icon-faqs
             | FAQ
+        li
+          a(href="#screenshots")
+            i.icon-diamond
+            | Screenshots
         li
           a(href="#contributors")
             i.icon-contribute
@@ -35,7 +43,9 @@ html
     .main
       header
         .wrapper
-          h1 VikinghugUI
+          .row
+            .small-12.medium-9.small-center.columns
+              include:md ../data/header.md
       content
         section.sub-header
           .row
@@ -107,6 +117,18 @@ html
 
               include:md ../data/download.md
 
+        //- SECTION: connected
+        a#connected.anchor
+        section.conncted
+          //- section header
+          .row
+            .small-12.medium-10.columns.small-center.text-center
+              h2
+                i.icon-pulse
+                | Get Connected
+
+              include:md ../data/connected.md
+
 
         //- SECTION: FAQ
         a#faq.anchor
@@ -119,6 +141,18 @@ html
                 | FAQ
 
               include:md ../data/faq.md
+
+        //- SECTION: SCREENSHOTS
+        a#screenshots.anchor
+        section.screenshots
+          //- section header
+          .row
+            .small-12.medium-10.columns.small-center.text-center
+              h2
+                i.icon-diamond
+                | Screenshots
+
+              include:md ../data/screenshots.md
 
 
         //- SECTION: CONTRIBUTORS

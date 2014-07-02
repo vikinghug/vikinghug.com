@@ -3,7 +3,8 @@
   "watch": [
     "lib/*.coffee",
     "app.coffee",
-    "start.js"
+    "start.js",
+    "data/*.*"
   ],
   "ignore": [
     "app/**/*",

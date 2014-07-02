@@ -40,6 +40,7 @@
     "octonode": "^0.6.3",
     "serve-favicon": "^2.0.1",
     "stylus": "^0.42.3",
+    "underscore": "^1.6.0",
     "watchjs": "0.0.0",
     "win-spawn": "^2.0.0"
   },

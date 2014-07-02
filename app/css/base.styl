@@ -144,11 +144,14 @@ header {
     color: yellow;
     font-size: 3em;
     font-weight: 200;
+    padding-bottom: 0;
   }
 
   h2 {
-    font-size: 3em;
+    font-size: 1em;
     font-style: italic;
+    widows: 1;
+    orphans: 1;
   }
   @media medium-up {
     h1 { font-size: 6em; }
@@ -214,14 +217,48 @@ screen-background-color(color) {
 
 
 //
+// Cross Sectional
+// ******************************************************************
+section {
+  padding-bottom: 8em;
+  padding-top: 8em;
+
+  h3:nth-of-type(1) { margin-top: 0; }
+
+  a.button {
+    border-radius: 1000px;
+    box-shadow: 0 0 0 1px green;
+    color: green;
+    padding: .25em 1em;
+    font-size: 1.5em;
+    &:hover {
+      box-shadow: 0 0 0 1px green;
+      background-color: green;
+      color: black;
+      padding: .25em 1em;
+    }
+  }
+
+  a:not(.button) {
+    display: inline-block;
+    color: green;
+    &:hover {
+      background: green;
+      color: black;
+      padding: 0 10px;
+    }
+  }
+
+  p { line-height: 1.6em; }
+
+}
+
+
+//
 // MODULES
 // ******************************************************************
-.modules {
-  padding-top: 8em;
-  padding-bottom: 8em;
-}
+.modules {}
 .module {
-
   border-bottom: 1px solid purple;
   margin-bottom: 10px;
   screen-color(light-grey);
@@ -305,12 +342,7 @@ screen-background-color(color) {
 // ******************************************************************
 section.download {
   background: purple;
-  padding-bottom: 8em;
-  padding-top: 8em;
   h2, h3, p { color: light-grey; }
-
-
-  h3:nth-of-type(1) { margin-top: 0; }
 
   h3 {
     border-bottom: 1px solid rgba(light-purple, .2);
@@ -327,32 +359,6 @@ section.download {
     font-size: 1.6em;
   }
 
-  p {
-    line-height: 1.6em;
-  }
-  a {
-    display: inline-block;
-    color: green;
-    &:hover {
-      background: green;
-      color: black;
-      padding: 0 10px;
-    }
-  }
-  a.button {
-    border-radius: 1000px;
-    box-shadow: 0 0 0 1px green;
-    color: green;
-    padding: .25em 1em;
-    font-size: 1.5em;
-    &:hover {
-      box-shadow: 0 0 0 1px green;
-      background-color: green;
-      color: black;
-      padding: .25em 1em;
-    }
-  }
-
   blockquote p {
     color: light-purple;
     padding: 0;
@@ -360,16 +366,18 @@ section.download {
 }
 
 //
+// Download
+// ******************************************************************
+section.connected {
+  background: blue;
+}
+
+//
 // FAQ
 // ******************************************************************
 section.faq {
   background: white;
-  padding-bottom: 8em;
-  padding-top: 8em;
   h2, h3, p { color: light-purple; }
-
-
-  h3:nth-of-type(1) { margin-top: 0; }
 
   h3 {
     border-bottom: 1px solid rgba(light-purple, .2);
@@ -386,6 +394,18 @@ section.faq {
   }
 }
 
+//
+// Screenshots
+// ******************************************************************
+section.screenshots {
+  background: purple;
+
+  h3 {
+    background: rgba(light-grey, .05);
+    color: light-purple;
+    padding: 2em;
+  }
+}
 
 //
 // CONTRIBUTORS
@@ -422,11 +442,6 @@ footer {
   background: purple;
   text-align: center;
   padding: 20px;
-}
-
-section {
-  padding-top: 40px;
-  padding-bottom: 40px;
 }
 
 .fa:before {

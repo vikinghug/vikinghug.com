@@ -1,4 +1,4 @@
-
+_ = require "underscore"
 
 $ ->
 
@@ -9,24 +9,33 @@ $ ->
     else
       $('body').addClass('open')
 
-  closeMenu = ->
-    $('body').removeClass('open')
+  closeMenu = -> $('body').removeClass('open')
 
-  $(document).on 'scroll', (e) ->
-    if $(this).scrollTop() <= 10
+  handleScroll = ->
+    if $(this).scrollTop() <= 0
       $('body').addClass('top')
     else
       $('body').removeClass('top')
 
-  $('.menu').on 'click', toggleMenu
+  gotoAnchor = ($el) ->
+    position = $($el.attr('href')).offset().top
+    distance = position - $(document).scrollTop()
+    speed = 10
+    time = Math.abs(distance) / speed
+    $('html, body').animate
+      scrollTop: position
+    , Math.floor time
 
+  _gotoAnchor = _.throttle gotoAnchor, 500, { trailing: false }
+  _handleScroll     = _.throttle handleScroll, 300, true
+  _toggleMenu = _.throttle toggleMenu, 300, true
+
+  $('.menu').on 'click', _toggleMenu
 
   $('navigation [href]').on 'click', (e) =>
     e.preventDefault()
     closeMenu()
-    $el = $(e.target)
-    $('html, body').animate
-      scrollTop: $($el.attr('href')).offset().top
-    , 1000
+    _gotoAnchor($(e.currentTarget))
 
 
+  $(document).on 'scroll', _handleScroll
