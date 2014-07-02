@@ -3,9 +3,8 @@ Make sure you have done the following:  ESC -> Interface -> windows and reset al
 
 The UnitFrame can be moved and scaled as you like. 
 
-hold ctrl down and click on the top edge to move it. 
-
-Find a corner and you'll see the rescaleing arrows. 
+0. Hold ctrl down and click on the top edge to move it.
+1. Find a corner and you'll see the rescaleing arrows. 
 
 (Note that the background gradiant isn't large enough atm. This does it doesn't scale correctly together with the rest. Will be fixed soon by replacing it with a higher gradiant)
 ### Actionbars won't show up
