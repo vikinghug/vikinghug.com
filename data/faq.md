@@ -21,8 +21,8 @@ We will later on try and work out how to support other addons.
 ### The Downloader only downloads some of the folders
 Make sure your firewall is allowing it to download. Some firewalls might block it.
 
-### How do I change size/color/placement?
-Simply put: you don't. VIkingUI is in its early stages and we don't have customization done yet. It will come, just not yet.
+### How do I change color?
+Simply put: you don't. VIkingUI is in its early stages and we don't have much customization done yet. It will come, just not yet.
 
 ### The Tradeskills doesn't work and gives "Package not found" error
 Thats because you have installed VikingTooltips which is not working as intended atm. (It isn't even tested beyond that error)
