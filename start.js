@@ -35,7 +35,6 @@ var runCommand = function(command, args, callback) {
 
   var cb = callback;
   cmd.on('close', function(code) {
-
     if (code == 0 && cb && typeof(cb) === "function") { cb(); }
     util.print('Child process exited with code: ', code, "\n");
     if (args[0] == 'watch') { die(cmd); }
