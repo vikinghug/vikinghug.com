@@ -10,6 +10,9 @@ The UnitFrame can be moved and scaled as you like.
 ### Actionbars won't show up
 Check that you haven't disabled actionbars by pressing ESC -> HUD and check Skills. It should be Always on.*
 
+### Inventory window is too small
+You can resize it from the top left corner 
+
 ### Some addons won't load in game
 If you downloaded your addons from GitHub, you need to remove the -master or -development part from the folder name.
 
