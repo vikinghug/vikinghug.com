@@ -1,4 +1,4 @@
-### Unitframes are very big or I just don't like their location
+### Can I move or resize the UnitFrames?
 Make sure you have done the following:  ESC -> Interface -> windows and reset all postions. 
 
 The UnitFrame can be moved and scaled as you like. 
