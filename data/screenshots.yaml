@@ -1,9 +1,9 @@
 - name: some name
-  url: assets/img/screenshots/somefile.jpg
+  url: assets/img/screenshots/1.png
 
 - name: some name 2
-  url: assets/img/screenshots/somefile2.jpg
-  
+  url: assets/img/screenshots/2.png
+ 
 - name: some name 3
-  url: assets/img/screenshots/somefile3.jpg
-  
+  url: assets/img/screenshots/3.png
+

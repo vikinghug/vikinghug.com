@@ -38,13 +38,14 @@ getDataFile = (file) ->
     console.log(err)
 
 contributors = getDataFile('contributors')
+screenshots  = getDataFile('screenshots')
 
 app.get '/', (req, res) ->
-  res.render(generatedPath + '/index.html', {contributors: contributors, repos: gh.repos})
+  res.render(path.join(generatedPath, 'index.html'), {contributors: contributors, screenshots: screenshots, repos: gh.repos})
 app.get /^\/(\w+)(?:\.)?(\w+)?/, (req, res) ->
   path = req.params[0]
   ext  = req.params[1] ? "html"
-  res.render(basePath + "/.generated/#{path}.#{ext}")
+  res.render(path.join(basePath, ".generated", "#{path}.#{ext}"))
 
 app.get '/api/repos', (req, res) ->
 

@@ -124,7 +124,7 @@ html
         a#connected.anchor
         section.conncted
           //- section header
-          .row
+          .row 
             .small-12.medium-10.columns.small-center.text-center
               h2
                 i.icon-pulse
@@ -150,12 +150,14 @@ html
         section.screenshots
           //- section header
           .row
-            .small-12.medium-10.columns.small-center.text-center
+            .small-12.columns.text-center
               h2
                 i.icon-diamond
-                | Screenshots
-
-              include:md ../data/screenshots.md
+                | Screenshots 
+                | {{#each screenshots}}
+                a(href='{{url}}')
+                  img(src='{{url}}')
+                | {{/each}}
 
 
         //- SECTION: CONTRIBUTORS
