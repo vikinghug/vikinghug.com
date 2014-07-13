@@ -124,7 +124,7 @@ html
         a#connected.anchor
         section.conncted
           //- section header
-          .row 
+          .row
             .small-12.medium-10.columns.small-center.text-center
               h2
                 i.icon-pulse
@@ -153,12 +153,13 @@ html
             .small-12.columns.text-center
               h2
                 i.icon-diamond
-                | Screenshots 
-                | {{#each screenshots}}
-                a(href='{{url}}')
-                  img(src='{{url}}')
-                | {{/each}}
-
+                | Screenshots
+          .row
+            | {{#each screenshots}}
+            .small-12.medium-6.columns.text-center
+              a(href='#'  data-reveal-id="modal-{{id}}")
+                img(src='{{url}}')
+            | {{/each}}
 
         //- SECTION: CONTRIBUTORS
         a#contributors.anchor
@@ -198,7 +199,13 @@ html
             | {{/each}}
       footer
         | vikinghug is affiliated with vikinghug, all rights preserved.
+
+    | {{#each screenshots}}
+    .reveal-modal(id="modal-{{id}}" data-reveal)
+      img(src='{{url}}')
+    | {{/each}}
     script(src='/assets/js/app.js')
+    script(src="/vendor/foundation/js/foundation.js")
     script(type='text/javascript', src='//use.typekit.net/sxr1eag.js')
     script.
       //- teepskwat

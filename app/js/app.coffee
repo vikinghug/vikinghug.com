@@ -1,7 +1,8 @@
-_ = require "underscore"
+_    = require "underscore"
 
 $ ->
 
+  $(document).foundation()
 
   toggleMenu = ->
     if $('body.open').length > 0
