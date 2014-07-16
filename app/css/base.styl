@@ -214,6 +214,16 @@ screen-background-color(color) {
   }
 }
 
+make-button(color) {
+  box-shadow: 0 0 0 1px color;
+  color: color;
+  &:hover {
+    box-shadow: 0 0 0 1px color;
+    background-color: color;
+    color: black;
+    padding: .25em 1em;
+  }
+}
 
 //
 // Cross Sectional
@@ -225,16 +235,12 @@ section {
   h3:nth-of-type(1) { margin-top: 0; }
 
   a.button {
+    make-button(green);
     border-radius: 1000px;
-    box-shadow: 0 0 0 1px green;
-    color: green;
     padding: .25em 1em;
     font-size: 1.5em;
-    &:hover {
-      box-shadow: 0 0 0 1px green;
-      background-color: green;
-      color: black;
-      padding: .25em 1em;
+    &.secondary {
+      make-button(light-purple);
     }
   }
 
@@ -414,7 +420,7 @@ section.download {
 }
 
 //
-// Download
+// Connected
 // ******************************************************************
 section.connected {
   background: blue;
@@ -508,3 +514,6 @@ input[type=image] {
   display: block;
   margin: 0 auto;
 }
+
+
+.hidden { display: none; }
