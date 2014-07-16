@@ -1,8 +1,9 @@
-_    = require "underscore"
+
+_   = require "underscore"
+$   = require "jquery"
+vex = require "../../bower_components/vex/coffee/vex.coffee"
 
 $ ->
-
-  $(document).foundation()
 
   toggleMenu = ->
     if $('body.open').length > 0
@@ -27,9 +28,22 @@ $ ->
       scrollTop: position
     , Math.floor time
 
-  _gotoAnchor = _.throttle gotoAnchor, 500, { trailing: false }
-  _handleScroll     = _.throttle handleScroll, 300, true
-  _toggleMenu = _.throttle toggleMenu, 300, true
+
+  vex.defaultOptions.className = 'vex-theme-vikinghug'
+  $("[data-screenshot]").on 'click', (e) ->
+    e.preventDefault()
+    console.log "HI", $(this).html()
+    vex.open
+      content: $(this).html()
+      afterOpen: ($vexContent) ->
+        console.log $vexContent.data().vex
+        $vexContent.append $vexContent.content
+      afterClose: ->
+        console.log 'vexClose'
+
+  _gotoAnchor   = _.throttle gotoAnchor, 500, { trailing: false }
+  _handleScroll = _.throttle handleScroll, 300, true
+  _toggleMenu   = _.throttle toggleMenu, 300, true
 
   $('.menu').on 'click', _toggleMenu
 
