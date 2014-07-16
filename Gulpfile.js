@@ -11,12 +11,12 @@ var gulp         = require('gulp'),
     rename       = require('gulp-rename'),
     stylus       = require('gulp-stylus'),
     browserify   = require('gulp-browserify'),
-    path         = require('path');
+    path         = require('path'),
+    del          = require('del');
 
 // var del, livereload, runSequence;
 
 if (process.env.NODE_ENV == "development") {
-  del         = require('del'),
   livereload  = require('gulp-livereload'),
   runSequence = require('run-sequence');
 }
