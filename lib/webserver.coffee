@@ -9,7 +9,7 @@ yaml    = require('js-yaml')
 
 app           = express()
 webserver     = http.createServer(app)
-basePath      = path.dirname(path.join(__dirname, '..'))
+basePath      = path.join(__dirname, '..')
 generatedPath = path.join(basePath, '.generated')
 vendorPath    = path.join(basePath, 'bower_components')
 faviconPath   = path.join(basePath, 'app', 'favicon.ico')
