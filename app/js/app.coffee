@@ -1,7 +1,8 @@
 
-_   = require "underscore"
-$   = require "jquery"
-vex = require "../../bower_components/vex/coffee/vex.coffee"
+_    = require "underscore"
+$    = require "jquery"
+path = require "path"
+vex  = require path.join(__dirname, "..", "..", "bower_components", "vex", "coffee", "vex.coffee")
 
 $ ->
 
