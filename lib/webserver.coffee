@@ -42,10 +42,10 @@ screenshots  = getDataFile('screenshots')
 
 app.get '/', (req, res) ->
   res.render(path.join(generatedPath, 'index.html'), {contributors: contributors, screenshots: screenshots, repos: gh.repos})
-app.get /^\/(\w+)(?:\.)?(\w+)?/, (req, res) ->
-  path = req.params[0]
-  ext  = req.params[1] ? "html"
-  res.render(path.join(basePath, ".generated", "#{path}.#{ext}"))
+# app.get /^\/(\w+)(?:\.)?(\w+)?/, (req, res) ->
+#   path = req.params[0]
+#   ext  = req.params[1] ? "html"
+#   res.render(path.join(basePath, ".generated", "#{path}.#{ext}"))
 
 app.get '/api/repos', (req, res) ->
 
