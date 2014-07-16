@@ -1,8 +1,5 @@
 
 _    = require "underscore"
-$    = require "jquery"
-path = require "path"
-vex  = require path.join(__dirname, "..", "..", "bower_components", "vex", "coffee", "vex.coffee")
 
 $ ->
 
@@ -33,14 +30,11 @@ $ ->
   vex.defaultOptions.className = 'vex-theme-vikinghug'
   $("[data-screenshot]").on 'click', (e) ->
     e.preventDefault()
-    console.log "HI", $(this).html()
+
     vex.open
       content: $(this).html()
       afterOpen: ($vexContent) ->
-        console.log $vexContent.data().vex
         $vexContent.append $vexContent.content
-      afterClose: ->
-        console.log 'vexClose'
 
   _gotoAnchor   = _.throttle gotoAnchor, 500, { trailing: false }
   _handleScroll = _.throttle handleScroll, 300, true
