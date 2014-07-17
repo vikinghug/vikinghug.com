@@ -49,6 +49,7 @@ app.get '/', (req, res) ->
 #   res.render(path.join(generatedPath, "#{path}.#{ext}"))
 
 app.get '/api/repos', (req, res) ->
+  res.send(gh.repos)
 
 
 
