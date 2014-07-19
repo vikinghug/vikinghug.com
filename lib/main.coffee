@@ -20,7 +20,7 @@ class Main
 
       cs.info " << <connection> "
 
-      socket.on 'all repos please', => socket.emit('all repos', gh.repos)
+      socket.on 'all repos please', => socket.emit('update all repos', gh.repos)
 
       gh.on "repos", (payload) => socket.emit("repos", payload)
 

@@ -19,9 +19,9 @@ describe "When Main is initialized the client:", ->
 
     client.on "HELLO", ->
       db.hello = true
-      client.emit 'HANDSHAKE', sid: "test"
+      client.emit 'all repos please'
 
-    client.on "repos", (data) ->
+    client.on 'update all repos', (data) ->
       db.repos = data
       @removeAllListeners()
       done()
