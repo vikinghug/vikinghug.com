@@ -283,6 +283,7 @@ section {
     padding: 4px 10px;
     top: 47%;
     margin-top: -1em;
+    z-index: 100;
     &:hover {
       box-shadow: 0 0 0 1px light-grey;
       background-color: light-grey;
@@ -290,9 +291,9 @@ section {
     }
   }
 
-
   .status {
     display: inline-block;
+    z-index: 1;
     color: light-purple !important;
     font-size: .5em;
     text-align: center;
@@ -321,7 +322,13 @@ section {
 
   .title {
 
+    > a {
+      position: relative;
+      z-index: 3;
+    }
+
     .tooltip {
+      cursor: default;
       transition: right .3s ease, margin .3s ease, opacity .3s ease;
       opacity: 0;
       background: purple;
@@ -361,15 +368,18 @@ section {
       }
     }
   }
-  .title a {
-    &:hover ~ .tooltip {
-      opacity: 1;
-      margin-left: 80px;
-      right: -1px;
-      z-index: 100;
-    }
-    position: relative;
+
+  &:hover .title a ~ .tooltip {
+    opacity: 1;
+    margin-left: 60px;
+    right: -1px;
+    z-index: 99;
   }
+  &:hover .title ~ a.issues {
+    right: 15px;
+  }
+  .title { position: relative; }
+
 }
 
 .screen {
