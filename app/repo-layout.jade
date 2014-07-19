@@ -1,0 +1,22 @@
+doctype html
+html
+  head
+    title vikinghug.com
+    meta(name='viewport', content='initial-scale=1, maximum-scale=1, width=device-width, user-scalable=no')
+    script(type="text/javascript" src="/socket.io/socket.io.js")
+    link(rel='stylesheet', href='/assets/css/main.css')
+    link(rel="stylesheet", href="/vendor/vex/css/vex.css")
+  body
+    a#top.anchor
+
+    .main
+      header
+        .wrapper
+          .row
+            .small-12.medium-9.small-center.columns
+              include:md ../data/header.md
+      block content
+
+    footer
+      | vikinghug is affiliated with vikinghug, all rights preserved.
+    block footer

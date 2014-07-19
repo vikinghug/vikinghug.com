@@ -1,1 +1,1 @@
-require("./lib/webserver.coffee")
+require("./lib/main.coffee")

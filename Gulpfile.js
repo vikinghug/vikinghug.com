@@ -5,6 +5,7 @@ dotenv.load();
 // Gulpfile.js
 // Require the needed packages
 var gulp         = require('gulp'),
+    coffee       = require('gulp-coffee'),
     ejs          = require('gulp-ejs'),
     gutil        = require('gulp-util'),
     jade         = require('gulp-jade'),
@@ -29,7 +30,9 @@ var baseAppPath = path.join(__dirname, 'app'),
 var paths = {
   cssInput: path.join(baseCssPath, 'main.styl'),
   cssOutput: path.join(baseStaticPath, 'css'),
-  coffeeInput: path.join(baseJsPath, 'app.coffee'),
+  coffeeInput: [
+    path.join(baseJsPath, '**/*.coffee'),
+  ],
   coffeeOutput: path.join(baseStaticPath, 'js'),
   cleanPath: path.join(baseStaticPath, '**', '*'),
   ejsPath:  [path.join(baseAppPath, '**', '*.ejs')],
@@ -60,7 +63,7 @@ var testFiles = [
 ];
 
 
-gulp.task('test', function() {
+gulp.task('test', function () {
   // Be sure to return the stream
   return gulp.src(testFiles)
     .pipe(karma({
@@ -78,7 +81,6 @@ gulp.task('test', function() {
 // Stylus
 //
 
-
 // Get and render all .styl files recursively
 gulp.task('stylus', function () {
   return gulp.src(paths.cssInput)
@@ -93,16 +95,16 @@ gulp.task('stylus', function () {
 // Coffee
 //
 
-gulp.task('coffee', function() {
-  return gulp.src(paths.coffeeInput, { read: false })
+gulp.task('coffee', function () {
+  return gulp.src(paths.coffeeInput)
+    .pipe(coffee({bare: true})
+      .on('error', gutil.log)
+      .on('error', gutil.beep))
     .pipe(browserify({
       basedir: __dirname,
       transform: ['coffeeify'],
       extensions: ['.coffee']
-    }).on('error', gutil.log)
-      .on('error', gutil.beep))
-    .pipe(rename('app.js'))
-    .pipe(gulp.dest(paths.coffeeOutput));
+    })).pipe(gulp.dest(paths.coffeeOutput));
 });
 
 
@@ -110,17 +112,18 @@ gulp.task('coffee', function() {
 // Jade
 //
 
-gulp.task('jade', function() {
+gulp.task('jade', function () {
   return gulp.src(paths.jadePath)
     .pipe(jade({ pretty: true }))
-    .pipe(gulp.dest(paths.assetsOutput))
+    .pipe(gulp.dest(paths.assetsOutput));
 });
+
 
 //
 // EJS
 //
 
-gulp.task('ejs', function() {
+gulp.task('ejs', function () {
   return gulp.src(paths.ejsPath)
     .pipe(ejs()
       .on('error', gutil.log)
@@ -133,7 +136,7 @@ gulp.task('ejs', function() {
 // Static Assets
 //
 
-gulp.task('assets', function() {
+gulp.task('assets', function () {
   return gulp.src(paths.assetsPaths, {base: paths.assetsBasePath})
     .on('error', gutil.log)
     .on('error', gutil.beep)
@@ -145,7 +148,7 @@ gulp.task('assets', function() {
 // clean
 //
 
-gulp.task('clean', function() {
+gulp.task('clean', function () {
   return del(paths.cleanPath, { sync: true });
 });
 
@@ -155,8 +158,9 @@ gulp.task('clean', function() {
 //
 
 gulp.task('watch-pre-tasks', function(callback) {
-  runSequence('clean',['coffee','stylus','assets','ejs','jade'], callback);
+  runSequence('clean', ['coffee','stylus','assets','ejs','jade'], callback);
 });
+
 
 //
 // Watch

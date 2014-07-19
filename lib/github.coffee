@@ -94,8 +94,8 @@ class Github extends EventEmitter
     try
       repo = client.repo("#{@owner}/#{payload.name}")
       repo.commit 'master', (err, data, headers) =>
-        past = new Date(data.commit.author.date).getTime()
-        now  = new Date().getTime()
+        past  = new Date(data.commit.author.date).getTime()
+        now   = new Date().getTime()
         delta = Math.abs(now - past) / 1000
         callback(payload, Math.floor(delta / 3600) < 12, data.commit.message)
     catch err
