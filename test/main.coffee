@@ -19,9 +19,9 @@ describe "When Main is initialized the client:", ->
 
     client.on "HELLO", ->
       db.hello = true
-      client.emit 'all repos please'
+      client.emit 'request repos manifest'
 
-    client.on 'update all repos', (data) ->
+    client.on 'update repos manifest', (data) ->
       db.repos = data
       @removeAllListeners()
       done()

@@ -1,9 +1,10 @@
 
-http    = require('http')
 express = require('express')
-path    = require('path')
 favicon = require('serve-favicon')
 fs      = require('fs')
+http    = require('http')
+path    = require('path')
+request = require('superagent')
 yaml    = require('js-yaml')
 
 basePath      = path.join(__dirname, '..')
@@ -13,17 +14,18 @@ faviconPath   = path.join(basePath, 'app', 'favicon.ico')
 
 class WebServer
 
-  constructor: (github) ->
+  repos: null
+
+  constructor: ->
     @app    = express()
     @server = http.createServer(@app)
     @configureServer()
     @setupRoutes()
 
-    @gh = github
-    @gh.getRepos()
+    @getRepos()
     setInterval =>
-      @gh.getRepos()
-    , 20000
+      @getRepos()
+    , 1000
 
   configureServer: ->
     @app.engine('.html', require('hbs').__express)
@@ -42,21 +44,23 @@ class WebServer
     catch err
       console.log(err)
 
+  getRepos: ->
+    self = this
+    request
+    .get('http://api.vikinghug.com/repos')
+    .end (res) => self.repos = res.body
+
   setupRoutes: ->
     contributors = @getDataFile('contributors')
     screenshots  = @getDataFile('screenshots')
 
     @app.get '/', (req, res) =>
-      res.render(path.join(generatedPath, 'index.html'), {contributors: contributors, screenshots: screenshots, repos: @gh.repos})
+      res.render(path.join(generatedPath, 'index.html'), {contributors: contributors, screenshots: screenshots, repos: @repos})
 
     @app.get '/repos', (req, res) =>
       res.render(path.join(generatedPath, 'repos.html'))
-    # @app.get /^\/(\w+)(?:\.)?(\w+)?/, (req, res) ->
-    #   path = req.params[0]
-    #   ext  = req.params[1] ? "html"
-    #   res.render(path.join(generatedPath, "#{path}.#{ext}"))
 
-    @app.get '/api/repos', (req, res) -> res.send(gh.repos)
+    @app.get '/api/repos', (req, res) => res.send(@repos)
 
 
 
