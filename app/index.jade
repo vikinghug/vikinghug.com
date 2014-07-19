@@ -51,7 +51,9 @@ block content
             li.module(class="{{#if recent_update}}recent-update{{/if}}")
               h3.title
                 i.icon-github
-                a(href='{{html_url}}') {{name}}
+                a(href='{{html_url}}')
+                    {{name}}
+                    small.version {{version}}
                 | {{#if recent_update}}
                 span.status recent updates
                 .tooltip
