@@ -65,4 +65,4 @@ class WebServer
 
 
 
-module.exports = WebServer
+module.exports = new WebServer()
