@@ -43,3 +43,18 @@
 - name: squidd
   role: Miscellaneous & irc op
   github: squidz
+
+- name: midraal
+  role: Programming
+  github: midraal
+
+- name: Thinksquirrel
+  role: Programming
+  website: thinksquirrel.com
+  github: jcmontoute
+
+- name: venetianthief
+  role: Conjuror of Epic Pixels
+  website: ideaskillet.co
+  twitter: venetianthief
+  github: venetianthief
