@@ -1,3 +1,5 @@
-# VikinghugUI
+# Vikinghug
 
-## *Disclaimer: VikinghugUI is very much in a pre-alpha state. There will be tons of bugs, things will break, and is generally not reliable.*
+Making tools for games since 2014.
+
+<a href="http://github.com/vikinghug" class="button">Check us out on github</a>

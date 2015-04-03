@@ -149,7 +149,7 @@ gulp.task('assets', function () {
 //
 
 gulp.task('clean', function () {
-  return del(paths.cleanPath, { sync: true });
+  return del.sync(paths.cleanPath);
 });
 
 
@@ -168,20 +168,10 @@ gulp.task('watch-pre-tasks', function(callback) {
 gulp.task('watch', function(callback) {
 
   gulp.watch(watchPaths.css, ['stylus'])
-    .on('error', gutil.log)
-    .on('error', gutil.beep);
   gulp.watch(watchPaths.coffee, ['coffee'])
-    .on('error', gutil.log)
-    .on('error', gutil.beep);
   gulp.watch(watchPaths.assets, ['assets'])
-    .on('error', gutil.log)
-    .on('error', gutil.beep);
   gulp.watch(watchPaths.ejs, ['ejs'])
-    .on('error', gutil.log)
-    .on('error', gutil.beep);
   gulp.watch(watchPaths.jade, ['jade'])
-    .on('error', gutil.log)
-    .on('error', gutil.beep);
 
   if (livereload) {
     var server = livereload.listen({ silent: true });

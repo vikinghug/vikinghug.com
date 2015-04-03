@@ -131,7 +131,7 @@ navigation {
 // ******************************************************************
 
 header {
-  background-image: url('/assets/img/coming-soon-bg.jpg');
+  // background-image: url('/assets/img/coming-soon-bg.jpg');
   background-position: 50% 50%;
   background-repeat: no-repeat;
   background-size: cover;
@@ -234,16 +234,6 @@ section {
 
   h3:nth-of-type(1) { margin-top: 0; }
 
-  a.button {
-    make-button(green);
-    border-radius: 1000px;
-    padding: .25em 1em;
-    font-size: 1.5em;
-    &.secondary {
-      make-button(light-purple);
-    }
-  }
-
 
   a {
     display: inline-block;
@@ -255,6 +245,16 @@ section {
     }
   }
 
+}
+
+a.button {
+  make-button(green);
+  border-radius: 1000px;
+  padding: .25em 1em;
+  font-size: 1.5em;
+  &.secondary {
+    make-button(light-purple);
+  }
 }
 
 
@@ -406,7 +406,7 @@ section {
 
 
   &.target-frame {
-    background-image: url('/assets/img/modules/target-frame.jpg');
+    // background-image: url('/assets/img/modules/target-frame.jpg');
   }
 }
 
@@ -536,8 +536,12 @@ section.contributors {
 
 footer {
   background: purple;
-  text-align: center;
+  bottom: 0;
+  left: 0;
   padding: 20px;
+  position: fixed;
+  right: 0;
+  text-align: center;
 }
 
 .fa:before {
